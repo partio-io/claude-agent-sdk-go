@@ -1,12 +1,12 @@
 # Claude Agent SDK for Go
 
-[![CI](https://github.com/anthropics/claude-agent-sdk-go/actions/workflows/ci.yml/badge.svg)](https://github.com/anthropics/claude-agent-sdk-go/actions/workflows/ci.yml)
+[![CI](https://github.com/partio-io/claude-agent-sdk-go/actions/workflows/ci.yml/badge.svg)](https://github.com/partio-io/claude-agent-sdk-go/actions/workflows/ci.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/anthropics/claude-agent-sdk-go)](https://goreportcard.com/report/github.com/anthropics/claude-agent-sdk-go)
 [![Go Reference](https://pkg.go.dev/badge/github.com/anthropics/claude-agent-sdk-go.svg)](https://pkg.go.dev/github.com/anthropics/claude-agent-sdk-go)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![Go Version](https://img.shields.io/badge/Go-1.26+-00ADD8?logo=go)
 
-Go SDK for the [Claude Code CLI](https://code.claude.com). Spawns the CLI as a subprocess and communicates via NDJSON — zero external dependencies, idiomatic Go.
+A Go SDK for building AI agents powered by the [Claude Code CLI](https://code.claude.com). Launch Claude as a subprocess, stream responses over NDJSON, manage multi-turn sessions, handle tool use and hooks — all with zero external dependencies and idiomatic Go patterns like `iter.Seq2` and functional options.
 
 ## Install
 
