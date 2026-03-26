@@ -39,7 +39,6 @@ func Prompt(ctx context.Context, prompt string, opts ...Option) (*ResultMessage,
 	if err != nil {
 		return nil, err
 	}
-	defer func() { _ = proc.Close() }()
 
 	var result *ResultMessage
 
@@ -49,6 +48,7 @@ func Prompt(ctx context.Context, prompt string, opts ...Option) (*ResultMessage,
 			break
 		}
 		if err != nil {
+			_ = proc.Close()
 			return nil, err
 		}
 		if len(line) == 0 {
@@ -68,11 +68,15 @@ func Prompt(ctx context.Context, prompt string, opts ...Option) (*ResultMessage,
 		if rm.Type == "result" {
 			var r ResultMessage
 			if err := json.Unmarshal(rm.Data, &r); err != nil {
+				_ = proc.Close()
 				return nil, &ParseError{Raw: rm.Data, Err: err}
 			}
 			result = &r
 		}
 	}
+
+	// Wait for the process to finish so ExitCode() is valid.
+	_ = proc.Close()
 
 	if result == nil {
 		exitCode := proc.ExitCode()

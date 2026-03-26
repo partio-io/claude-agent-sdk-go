@@ -65,11 +65,11 @@ func BuildArgs(cfg Config, streaming bool) []string {
 		args = append(args, "--include-partial-messages")
 	}
 
-	for _, tool := range cfg.AllowedTools {
-		args = append(args, "--allowedTools", tool)
+	if len(cfg.AllowedTools) > 0 {
+		args = append(args, "--allowedTools", strings.Join(cfg.AllowedTools, ","))
 	}
-	for _, tool := range cfg.DisallowedTools {
-		args = append(args, "--disallowedTools", tool)
+	if len(cfg.DisallowedTools) > 0 {
+		args = append(args, "--disallowedTools", strings.Join(cfg.DisallowedTools, ","))
 	}
 	if cfg.PermissionMode != "" {
 		args = append(args, "--permission-mode", cfg.PermissionMode)
